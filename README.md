@@ -1,2 +1,2 @@
 # scroll-of-seals
-Utility tools for code
+Useful tools for code
