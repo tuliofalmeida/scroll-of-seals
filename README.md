@@ -1,4 +1,7 @@
-# scroll-of-seals
+# Scroll of Seals
+
+import scroll-of-seals as sos
+
 Useful tools for code
 
 
