@@ -7,7 +7,7 @@ setuptools.setup(
 
     name="scroll_of_seals",
     packages = ['scroll_of_seals'],
-    version="0.0.14",
+    version="0.0.15",
     author="Túlio F. Almeida",
     author_email="tuliofalmeida@hotmail.com",
     description="A useful library",

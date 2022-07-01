@@ -6,9 +6,9 @@ def cut_video(video_path,init,end,path2save):
 
     video_path : str
         The video location in drive or HDD
-    int: hour (HH:MM:SS)
+    int: str (HH:MM:SS)
         The start point to cut 
-    end: hour (HH:MM:SS)
+    end: str (HH:MM:SS)
         The cut end point
     path2save: str
         The path to save the video. Here you must
