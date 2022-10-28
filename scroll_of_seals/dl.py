@@ -76,6 +76,46 @@ def img_size_convolved( img_px , padding_size, kernel_size, stride_size, square 
         
     return int(rows),int(columns)
 
+def parameters_layer(n_k, n_f, height, width, bias = 1):
+    ''' 
+    Function to calculate the number of parameters of a layer.
+
+    Parameters
+    ----------
+    n_k : int
+        Number of output filters from this layer
+    n_f : int
+        number of filters coming from the previous layer
+    height : int
+        corresponds to the kernel height 
+    width : int
+        kernel width
+    bias : int
+        The value 1 corresponde to the bias parameter related 
+        to each filter.
+
+    Returns
+    -------
+    parameters : the number of parameters of the layer
+
+    Example
+    ----------
+    params_layer_n = parameters_layer(n_k = 32, 
+                                      n_f = 1,
+                                      height = 3,
+                                      width = 3,
+                                      bias = 1)
+    params_layer_n = 320
+
+    See Also
+    --------
+    Developed by Tulio Almeida.
+    https://github.com/tuliofalmeida/scroll-of-seals
+
+    '''
+    parameters = n_k * ( n_f * height * width + bias )
+    return parameters
+
 def data_spltit(data,labels, devset = True, batch = 32,proportion = [.1,.2]):
     ''' 
     Function to split a PyTorch tensor into train,dev,test in dataloaders.
