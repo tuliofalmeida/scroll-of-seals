@@ -155,6 +155,48 @@ def smooth(data,factor):
     import numpy as np
     return np.convolve(data,np.ones(factor)/factor,mode='same')    
 
+def interactive_table(df):
+    """
+    Creates an interactive table with statistics using a DataFrame as input. 
+    
+    Parameters
+    --------------
+    df: pd.DataFrame
+        
+    Returns
+    --------------
+    None
+    
+    Requirements
+    --------------
+    facets-overview==1.0.0
+
+    See Also
+    --------
+    Developed by Tulio Almeida.
+    https://github.com/tuliofalmeida/scroll-of-seals
+    
+    """
+    import pandas as pd
+    from facets_overview.feature_statistics_generator import FeatureStatisticsGenerator
+    from IPython.core.display import display, HTML
+    import base64
+
+    fsg = FeatureStatisticsGenerator()
+    dataframes = [
+        {'table': df, 'name': 'Data'}]
+    censusProto = fsg.ProtoFromDataFrames(dataframes)
+    protostr = base64.b64encode(censusProto.SerializeToString()).decode("utf-8")
+
+    HTML_TEMPLATE = """<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.3.3/webcomponents-lite.js"></script>
+            <link rel="import" href="https://raw.githubusercontent.com/PAIR-code/facets/1.0.0/facets-dist/facets-jupyter.html">
+            <facets-overview id="elem"></facets-overview>
+            <script>
+            document.querySelector("#elem").protoInput = "{protostr}";
+            </script>"""
+    html = HTML_TEMPLATE.format(protostr=protostr)
+    display(HTML(html))
+
 def parula_corlormap():
     """
     Parula colormap from MATLAB in python.
